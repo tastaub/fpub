@@ -6,20 +6,20 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 
-//Load Input Validation
+// Load Input Validation
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 // Load User model
-const User = require("../../models/User");
+const Admin = require("../../models/Admin");
 
-// @route GET api/users/test
+// @route GET api/admin/test
 // @desc Test users route
 // @access Public
 router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
-// @route POST api/users/register
-// @desc Register user
+// @route POST api/admin/register
+// @desc Register admin
 // @access Public
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -28,8 +28,8 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  User.findOne({ email: req.body.email }).then(user => {
-    if (user) {
+  Admin.findOne({ email: req.body.email }).then(admin => {
+    if (admin) {
       return res.status(400).json({ email: "Email already exist" });
     } else {
       const avatar = gravatar.url(req.body.email, {
@@ -38,20 +38,19 @@ router.post("/register", (req, res) => {
         d: "mm"
       });
 
-      const newUser = new User({
+      const newAdmin = new Admin({
         name: req.body.name,
         email: req.body.email,
-        avatar,
         password: req.body.password
       });
 
       bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (error, hash) => {
+        bcrypt.hash(newAdmin.password, salt, (error, hash) => {
           if (error) throw error;
-          newUser.password = hash;
-          newUser
+          newAdmin.password = hash;
+          newAdmin
             .save()
-            .then(user => res.json(user))
+            .then(admin => res.json(admin))
             .catch(err => console.log(err));
         });
       });
@@ -59,8 +58,8 @@ router.post("/register", (req, res) => {
   });
 });
 
-// @route POST api/users/login
-// @desc Login User
+// @route POST api/admin/login
+// @desc Login Admin
 // @access Public
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
@@ -72,25 +71,25 @@ router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  User.findOne({ email }).then(user => {
-    if (!user) {
-      errors.email = "User not found";
+  Admin.findOne({ email }).then(admin => {
+    if (!admin) {
+      errors.email = "admin not found";
       return res.status(404).json(errors);
     }
 
-    bcrypt.compare(password, user.password).then(isMatch => {
+    bcrypt.compare(password, admin.password).then(isMatch => {
       if (isMatch) {
-        // User Matched
+        // admin Matched
         const payload = {
-          id: user.id,
-          name: user.name,
-          avatar: user.avatar
+          id: admin.id,
+          name: admin.name
         };
+        console.log(payload);
         // Sign Token
         jwt.sign(
           payload,
           keys.secretOrKey,
-          { expiresIn: 3600 },
+          { expiresIn: 86400 },
           (err, token) => {
             res.json({
               success: true,
@@ -106,13 +105,14 @@ router.post("/login", (req, res) => {
   });
 });
 
-// @route GET api/users/current
+// @route GET api/admin/current
 // @desc Return current user
 // @access Private
 router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    console.log(req);
     res.json({
       user: req.user
     });
