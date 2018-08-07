@@ -32,12 +32,6 @@ router.post("/register", (req, res) => {
     if (admin) {
       return res.status(400).json({ email: "Email already exist" });
     } else {
-      const avatar = gravatar.url(req.body.email, {
-        s: "200",
-        r: "pg",
-        d: "mm"
-      });
-
       const newAdmin = new Admin({
         name: req.body.name,
         email: req.body.email,
