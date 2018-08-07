@@ -33,15 +33,21 @@ class Register extends Component {
     };
     API.register(newAdmin)
       .then(res => console.log(res))
-      .catch(err => console.log(err.response.data));
+      .catch(err =>
+        this.setState({
+          errors: err.response.data
+        })
+      );
   };
 
   render() {
     return (
       <div className="row">
+        <br />
+        <br />
         <form className="col s12">
-          <div className="row">
-            <div className="input-field col s6">
+          <div className="row center">
+            <div className="input-field col s6 offset-s3">
               <label>Name</label>
               <input
                 value={this.state.name}
@@ -49,9 +55,17 @@ class Register extends Component {
                 type="text"
                 name="name"
                 placeholder="Required"
+                className="validate"
               />
+              <span
+                className="helper-text"
+                data-error={this.state.errors}
+                data-success="right"
+              >
+                Helper text
+              </span>
             </div>
-            <div className="input-field col s6">
+            <div className="input-field col s6 offset-s3">
               <label>Email</label>
               <input
                 value={this.state.email}
@@ -61,7 +75,7 @@ class Register extends Component {
                 placeholder="Required"
               />
             </div>
-            <div className="input-field col s6">
+            <div className="input-field col s6 offset-s3">
               <label>Password</label>
               <input
                 value={this.state.password}
@@ -71,7 +85,7 @@ class Register extends Component {
                 placeholder="Required"
               />
             </div>
-            <div className="input-field col s6">
+            <div className="input-field col s6 offset-s3">
               <label>Confirm Password</label>
               <input
                 value={this.state.password2}
