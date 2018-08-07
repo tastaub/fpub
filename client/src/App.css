@@ -1,10 +1,66 @@
-.App {
-  text-align: center;
+
+body {
+  height: 100%;
+  background-image: url("https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/29472353_10156159359214882_8340017241470268793_n.jpg?_nc_cat=0&oh=328fc78e307d0a122eddf2c23b7e6545&oe=5BCB6F6A");
+  background-size: 100% 100%;
+}
+* {
+  padding: 0%;
+  margin: 0%;
 }
 
-.App-logo {
+h1 {
+  text-align: center;
+  font-family: 'Irish Grover', cursive;
+  font-size: 35px;
+  font-weight: 800;
+  height: 120px;
+  width: 100%;
+  background: rgb(45, 70, 41);
+  color: rgb(219, 191, 98);
+  border-bottom: 4px solid rgb(10, 56, 1);
+}
+
+div {
+  width: 250px;
+  height: 666px;
+  background: rgb(45, 70, 41);
+}
+div a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  padding-right: 100px;
+  display: inline-block;
+}
+div ul li {
+  list-style-type: none;
+  display: block;
+  padding: 15px;
+  border-bottom: 1px solid rgb(10, 56, 1);
+}
+div ul li:hover {
+  background: rgb(111, 151, 103);
+  transition: linear all 0.6s;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+div ul li a:hover {
+  color: black;
+}
+
+.Logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  padding: 5px;
+  height: 60px;
+  width: 60px;
+  }
+
+.contact {
+  display: inline-block;
+  text-align:  center;
+  padding: 0 !important;
 }
 
 .App-header {
@@ -23,6 +79,10 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
