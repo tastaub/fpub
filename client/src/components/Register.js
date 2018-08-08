@@ -33,11 +33,7 @@ class Register extends Component {
     };
     API.register(newAdmin)
       .then(res => console.log(res))
-      .catch(err =>
-        this.setState({
-          errors: err.response.data
-        })
-      );
+      .catch(err => console.log(err.response.data));
   };
 
   render() {
@@ -62,7 +58,7 @@ class Register extends Component {
                 data-error={this.state.errors}
                 data-success="right"
               >
-                Helper text
+                {helper}
               </span>
             </div>
             <div className="input-field col s6 offset-s3">
