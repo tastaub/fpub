@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import CSS from "./Main.css";
+import "./Main.css";
+import { Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+
 
 class Main extends Component {
   render() {
@@ -17,24 +20,24 @@ class Main extends Component {
         </h1>
         <ul>
           <li>
-            <a href="#" className="material-icons">
+            <Link to="/Main" className="material-icons">
               info ABOUT
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="material-icons">
+            <Link to="/Main" className="material-icons">
               restaurant_menu MENU
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="material-icons">
+            <Link to="/Main" className="material-icons">
               local_drink BEER LIST
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="material-icons">
+            <Link to="/Main" className="material-icons">
               event EVENTS
-            </a>
+            </Link>
           </li>
           <h2>
             (704) 671-4782
@@ -47,28 +50,24 @@ class Main extends Component {
           <br />
           <div>
             <p className="contact">
-              <a href="https://www.facebook.com/FreemansPub/" target="_blank">
-                {" "}
-                {/* <Icon name="facebook" size="big" /> */}
-              </a>
-              <a href="https://www.instagram.com/freemanspub/" target="_blank">
-                {" "}
-                {/* <Icon name="instagram" size="big" /> */}
-              </a>
-              <a
-                href="https://www.tripadvisor.com/ShowUserReviews-g49156-d1775729-r281484796-Freeman_s_Pub-Gastonia_North_Carolina.html"
+              <Link to="https://www.facebook.com/FreemansPub/" target="_blank">
+                 <Icon name="facebook" size="big" /> 
+              </Link>
+              <Link to="https://www.instagram.com/freemanspub/" target="_blank">
+                <Icon name="instagram" size="big" />
+              </Link>
+              <Link
+                to="https://www.tripadvisor.com/ShowUserReviews-g49156-d1775729-r281484796-Freeman_s_Pub-Gastonia_North_Carolina.html"
                 target="_blank"
               >
-                {" "}
-                {/* <Icon name="tripadvisor" size="big" /> */}
-              </a>
-              <a
-                href="https://www.yelp.com/biz/freemans-pub-gastonia?osq=freemans+pub"
+                <Icon name="tripadvisor" size="big" />
+              </Link>
+              <Link
+                to="https://www.yelp.com/biz/freemans-pub-gastonia?osq=freemans+pub"
                 target="_blank"
               >
-                {" "}
-                {/* <Icon name="yelp" size="big" /> */}
-              </a>
+                <Icon name="yelp" size="big" />
+              </Link>
             </p>
           </div>
         </ul>

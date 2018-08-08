@@ -54,7 +54,6 @@ div ul li a:hover {
 .contact {
   display: inline-block;
   text-align: center;
-  padding: 0 !important;
 }
 .App-header {
   background-color: #222;
