@@ -1,26 +1,20 @@
-body {
-  height: 100%;
-  background-image: url("https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/29472353_10156159359214882_8340017241470268793_n.jpg?_nc_cat=0&oh=328fc78e307d0a122eddf2c23b7e6545&oe=5BCB6F6A");
-  background-size: 100% 100%;
-}
+
 * {
   padding: 0%;
   margin: 0%;
 }
 h1 {
   text-align: center;
-  font-family: "Irish Grover", cursive;
+  font-family: "Irish Grover", cursive !important;
   font-size: 35px;
   font-weight: 800;
-  height: 120px;
   width: 100%;
   background: rgb(45, 70, 41);
   color: rgb(219, 191, 98);
   border-bottom: 4px solid rgb(10, 56, 1);
 }
-div {
+.sideBar {
   width: 250px;
-  height: 666px;
   background: rgb(45, 70, 41);
 }
 div a {
@@ -54,6 +48,8 @@ div ul li a:hover {
 .contact {
   display: inline-block;
   text-align: center;
+  background: rgb(45, 70, 41);
+
 }
 .App-header {
   background-color: #222;
