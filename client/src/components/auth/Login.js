@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import { Button, Form } from "semantic-ui-react";
 import axios from "axios";
-import API from "../utils/API";
+import API from "../../utils/API";
 
 class Login extends Component {
   state = {
