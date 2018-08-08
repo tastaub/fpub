@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
-import API from "../utils/API";
+import API from "../../utils/API";
 // import { Button, Form } from "semantic-ui-react";
 // import axios from "axios";
 
@@ -9,7 +9,8 @@ class Register extends Component {
     name: "",
     email: "",
     password: "",
-    password2: ""
+    password2: "",
+    errors: {}
   };
 
   // componentDidMount() {
@@ -33,14 +34,11 @@ class Register extends Component {
     };
     API.register(newAdmin)
       .then(res => console.log(res))
-      .catch(err =>
-        this.setState({
-          errors: err.response.data
-        })
-      );
+      .catch(err => this.setState({ errors: err.response.data }));
   };
 
   render() {
+    const { errors } = this.state;
     return (
       <div className="row">
         <br />
