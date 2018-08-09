@@ -3,10 +3,13 @@ import "./Main.css";
 import { Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-
 class Main extends Component {
   render() {
     return (
+      // <div className="container">
+      //   .row
+      // </div>
+
       <div>
         <h1>
           <img
@@ -51,7 +54,7 @@ class Main extends Component {
           <div>
             <p className="contact">
               <Link to="https://www.facebook.com/FreemansPub/" target="_blank">
-                 <Icon name="facebook" size="big" /> 
+                <Icon name="facebook" size="big" />
               </Link>
               <Link to="https://www.instagram.com/freemanspub/" target="_blank">
                 <Icon name="instagram" size="big" />

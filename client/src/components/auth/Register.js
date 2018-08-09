@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
-import API from "../../utils/API";
-// import { Button, Form } from "semantic-ui-react";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
+import classnames from "classnames";
+import { connect } from "react-redux";
+import { registerUser } from "../../actions/authActions";
 // import axios from "axios";
 
 class Register extends Component {
@@ -13,11 +15,13 @@ class Register extends Component {
     errors: {}
   };
 
-  // componentDidMount() {
-  //   this.loadBooks();
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
 
-  handleInputChange = event => {
+  onChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
@@ -26,81 +30,111 @@ class Register extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    let newAdmin = {
+    const newAdmin = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password
     };
-    API.register(newAdmin)
-      .then(res => console.log(res))
-      .catch(err => this.setState({ errors: err.response.data }));
+    this.props.registerUser(newAdmin, this.props.history);
+    // API.register(newAdmin)
+    //   .then(res => console.log(res))
+    //   .catch(err => this.setState({ errors: err.response.data }));
   };
 
   render() {
     const { errors } = this.state;
+
     return (
-      <div className="row">
-        <br />
-        <br />
-        <form className="col s12">
-          <div className="row center">
-            <div className="input-field col s6 offset-s3">
-              <label>Name</label>
-              <input
-                value={this.state.name}
-                onChange={this.handleInputChange}
-                type="text"
-                name="name"
-                placeholder="Required"
-                className="validate"
-              />
-              <span
-                className="helper-text"
-                data-error={this.state.errors}
-                data-success="right"
-              >
-                Helper text
-              </span>
-            </div>
-            <div className="input-field col s6 offset-s3">
-              <label>Email</label>
-              <input
-                value={this.state.email}
-                onChange={this.handleInputChange}
-                type="email"
-                name="email"
-                placeholder="Required"
-              />
-            </div>
-            <div className="input-field col s6 offset-s3">
-              <label>Password</label>
-              <input
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                type="password"
-                name="password"
-                placeholder="Required"
-              />
-            </div>
-            <div className="input-field col s6 offset-s3">
-              <label>Confirm Password</label>
-              <input
-                value={this.state.password2}
-                onChange={this.handleInputChange}
-                type="password"
-                name="password2"
-                placeholder="Required"
-              />
+      <div className="register">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8 m-auto">
+              <h1 className="display-4 text-center">Register Admin</h1>
+              <p className="lead text-center">Create new Admin User</p>
+              <form noValidate onSubmit={this.handleFormSubmit}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.name
+                    })}
+                    placeholder="Name"
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.onChange}
+                  />
+                  {errors.name && (
+                    <div className="invalid-feedback">{errors.name}</div>
+                  )}
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.email
+                    })}
+                    placeholder="Email Address"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.onChange}
+                  />
+                  {errors.email && (
+                    <div className="invalid-feedback">{errors.email}</div>
+                  )}
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.password
+                    })}
+                    placeholder="Password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.onChange}
+                  />
+                  {errors.password && (
+                    <div className="invalid-feedback">{errors.password}</div>
+                  )}
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.password2
+                    })}
+                    placeholder="Confirm Password"
+                    name="password2"
+                    value={this.state.password2}
+                    onChange={this.onChange}
+                  />
+                  {errors.password2 && (
+                    <div className="invalid-feedback">{errors.password2}</div>
+                  )}
+                </div>
+                <input type="submit" className="btn btn-info btn-block mt-4" />
+              </form>
             </div>
           </div>
-        </form>
-        <button type="submit" onClick={this.handleFormSubmit}>
-          Submit
-        </button>
+        </div>
       </div>
     );
   }
 }
 
-export default Register;
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(Register));

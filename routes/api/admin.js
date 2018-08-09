@@ -40,7 +40,9 @@ router.post("/register", (req, res) => {
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newAdmin.password, salt, (error, hash) => {
-          if (error) throw error;
+          if (errors) {
+            return res.status(400).json({ password: "Passwords must match" });
+          }
           newAdmin.password = hash;
           newAdmin
             .save()
