@@ -1,13 +1,54 @@
 import React, { Component } from "react";
+// import { Link } from "react-router-dom";
+import API from "../../utils/API";
+// import { Button, Form } from "semantic-ui-react";
+// import axios from "axios";
 import { Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "../Main/Main.css";
 
+var beers=[
+    "Guinness",
+    "Harp",
+    "Smithwick's",
+    "Fat Tire",
+    "Bottle​",
+    "Hook & Ladder Golden Ale",
+    "Leinenkugel's Sunset Ale",
+    "Blue Moon Belgian White",
+    "Magic Hat #9"
+    // George Killian's Red
+    // Bass Pale Ale
+    // Mc Sorley's Irish Pale Ale
+    // Pilsner Urquell
+    // Dogfish Head 90 Minutes IPA
+    // Highland Gaelic Ale
+    // Bell Haven Scottish Ale
+    // Newcastle Brown Ale
+    // Old Speckled Hen
+    // Boddington's Pub Ale
+    // 1 pint
+    // Stella Artois
+    // Chimay Blue
+    // 9%
+    // Wells Bombardier
+    // 16.9 oz
+    // Bud Light
+    // Miller Lite
+    // Michelob Ultra
+    // Yuengling Lager
+    // Corona
+]
+class Register extends Component {
 
-class Main extends Component {
+
   render() {
+      
+      var displayBeers = beers.map((eachitem,index)=> 
+     <p key={index} className="event-list">{eachitem}</p>
+    )
     return (
-    <div>
+      <div>
       <div id="main-container">
       <div className = "sideBar" >
         <h1>
@@ -55,7 +96,7 @@ class Main extends Component {
         </ul>
       </div>
 
-      <div className="white right-container"><h1>Welcome to the pub</h1></div>
+      <div className="white right-container">{displayBeers}</div>
       </div>
     </div>
 
@@ -65,4 +106,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default Register;

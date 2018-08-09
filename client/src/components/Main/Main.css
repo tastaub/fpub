@@ -1,4 +1,6 @@
-
+ .white {
+   color: white;
+ }
 * {
   padding: 0%;
   margin: 0%;
@@ -14,14 +16,32 @@ h1 {
   border-bottom: 4px solid rgb(10, 56, 1);
 }
 .sideBar {
-  width: 250px;
   background: rgb(45, 70, 41);
+  height: 100vh;
+}
+#main-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.right-container{
+  background: rgba(0, 0, 0, 0.418);
+  border-radius: 30%;
+  margin-top: 3vh;
+  padding: 40px;
+  margin-right: 40px;
+  margin-left: 40px;
+  max-height: 95%;
+}
+.list-data {
+  font-size: 20px;
+  font-weight: 900;
+
 }
 div a {
   text-decoration: none;
   color: white;
   padding: 10px;
-  padding-right: 100px;
   display: inline-block;
 }
 div ul li {
@@ -46,10 +66,17 @@ div ul li a:hover {
   width: 60px;
 }
 .contact {
-  display: inline-block;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   text-align: center;
   background: rgb(45, 70, 41);
 
+}
+
+.pub-intro{
+  text-align: center;
+  font-size: 40px;
+  color: white;
 }
 .App-header {
   background-color: #222;

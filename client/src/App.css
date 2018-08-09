@@ -1,12 +1,9 @@
-html{
-  background-image: url("https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/29472353_10156159359214882_8340017241470268793_n.jpg?_nc_cat=0&oh=328fc78e307d0a122eddf2c23b7e6545&oe=5BCB6F6A");
-  background-size: 100% 100%;
 
-}
 .App {
   text-align: center;
   background-image: url("https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/29472353_10156159359214882_8340017241470268793_n.jpg?_nc_cat=0&oh=328fc78e307d0a122eddf2c23b7e6545&oe=5BCB6F6A");
   background-size: 100% 100%;
+  height: 100vh;
   }
 
 .App-logo {
