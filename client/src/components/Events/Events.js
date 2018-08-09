@@ -43,9 +43,9 @@ class Register extends Component {
   render() {
       var displayEvents = events.map((eachitem,index)=> 
         <div>
-      <p className="event-list" key={index}>{eachitem.name}</p>
-      <p className="event-list" key={index}>{eachitem.date}</p>
-      <p className="event-list" key={index}>{eachitem.time}</p>
+      <p className="list-data" key={index}>{eachitem.name}</p>
+      <p className="list-data" key={index}>{eachitem.date}</p>
+      <p className="list-data" key={index}>{eachitem.time}</p>
         </div>
     )
     return (

@@ -45,7 +45,7 @@ class Register extends Component {
   render() {
       
       var displayBeers = beers.map((eachitem,index)=> 
-     <p key={index} className="event-list">{eachitem}</p>
+     <p key={index} className="list-data">{eachitem}</p>
     )
     return (
       <div>
