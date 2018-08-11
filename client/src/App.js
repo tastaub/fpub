@@ -14,6 +14,7 @@ import Login from "./components/auth/Login";
 import Main from "./components/Main/Main";
 import Beerlist from "./components/Beerlist/beerlist";
 import Events from "./components/Events/Events";
+import Menu from "./components/Menu/Menu";
 
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -46,6 +47,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/beerlist" component={Beerlist} />
             <Route exact path="/events" component={Events} />
+            <Route exact path="/Menu" component={Menu} />
           </div>
         </Router>
       </Provider>

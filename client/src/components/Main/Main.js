@@ -21,7 +21,7 @@ class Main extends Component {
             </Link>
             <ul>
               <li>
-                <Link to="/Main" className="material-icons">
+                <Link to="/Menu" className="material-icons">
                   restaurant_menu MENU{" "}
                 </Link>
               </li>
@@ -89,6 +89,13 @@ class Main extends Component {
               Downtown Gastonia. We have 70 plus bottle beer, 5 draft and over
               25 whiskys. Come see the hot spot in Downtown G Town. Live music
               Thursday-Saturday. Check events for updates!
+              <br/>
+              <br/>
+              <br/>
+              <img src={
+                  "https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-0/c9.0.200.200/p200x200/27657970_10156033792089882_6689822609519975239_n.jpg?_nc_cat=0&oh=3c040f92cb1e88e54a51de76dc4be849&oe=5C092770"
+                }
+                alt="freeman's"/>
             </h1>
           </div>
         </div>

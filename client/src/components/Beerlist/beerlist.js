@@ -57,7 +57,7 @@ class Register extends Component {
         </Link>
         <ul>
           <li>
-            <Link to = "/Main" className = "material-icons">restaurant_menu MENU </Link> 
+            <Link to = "/Menu" className = "material-icons">restaurant_menu MENU </Link> 
           </li> 
           <li>
             <Link to = "/beerlist" className = "material-icons" > local_drink BEER LIST </Link> 

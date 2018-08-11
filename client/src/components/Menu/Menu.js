@@ -7,54 +7,48 @@ import { Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "../Main/Main.css";
 
-var events=[
-  {
-    name: "Jade Moore at Freeman's Pub",
-    date: "AUG 3",
-    time: "9:30"  
+var beers=[
+   { name: "Pub Chips",
+    price: "$3.50"
    },
-  {
-    name: "Live music. Dan &a Cory Duo",
-    date: "AUG 4",
-    time: "9:30"  
-    },
-  {
-    name: "The Corey Hunt Band",
-    date: "JUL 28",
-    time: "9:30"  
-    },
-  {
-    name: "The Menders w Particles Collide",
-    date: "JUL 27",
-    time: "9:30"  
-    },
-  {
-    name: "Sticky Bandits",
-    date: "JUL 21",
-    time: "9:30"  
-    }
-
-
-
+   { name: "Beer Battered Onion Rings",
+    price: "$6.75"
+   },
+   { name: "Hot Wings",
+    price: "$6.00"
+   },
+   { name: "Chicken Tenders",
+    price: "$6.50"
+   },
+   { name: "Irish Sliders",
+    price: "$6.75"
+   },
+   { name: "Black Angus Burger",
+    price: "$7.50"
+   },
+   { name: "Salads, grilled chicken &", 
+    price: "much more to come!"
+   }
 ]
 class Register extends Component {
 
 
   render() {
-      var displayEvents = events.map((eachitem,index)=> 
+      
+      var displayBeers = beers.map((eachitem,index)=> 
         <div>
-      <p className="list-data" key={index}>{eachitem.name}</p>
-      <p className="list-data" key={index}>{eachitem.date}</p>
-      <p className="list-data" key={index}>{eachitem.time}</p>
+            <p key={index} className="list-data">{eachitem.name}</p>
+            <p key={index} className="list-data">{eachitem.price}</p>
         </div>
     )
     return (
       <div>
       <div id="main-container">
       <div className = "sideBar" >
-         <Link className="logo-name" to="/">  
+      <Link className="logo-name" to="/">
           <img className = "Logo" src = {
-            "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Charmed_1998_logo.svg/528px-Charmed_1998_logo.svg.png"} alt = "freeman's"/>Freemans Pub </Link>
+            "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Charmed_1998_logo.svg/528px-Charmed_1998_logo.svg.png"} alt = "freeman's"/>Freemans Pub 
+        </Link>
         <ul>
           <li>
             <Link to = "/Menu" className = "material-icons">restaurant_menu MENU </Link> 
@@ -93,7 +87,7 @@ class Register extends Component {
         </ul>
       </div>
 
-      <div className="white right-container">{displayEvents}</div>
+      <div className="white right-container">{displayBeers}</div>
       </div>
     </div>
 
