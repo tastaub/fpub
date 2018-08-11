@@ -9,7 +9,7 @@ class Main extends Component {
       <div>
         <div id="main-container">
           <div className="sideBar">
-            <h1>
+            <Link className="logo-name" to="/">
               <img
                 className="Logo"
                 src={
@@ -18,13 +18,8 @@ class Main extends Component {
                 alt="freeman's"
               />
               Freemans Pub
-            </h1>
+            </Link>
             <ul>
-              <li>
-                <Link to="/Main" className="material-icons">
-                  info ABOUT{" "}
-                </Link>
-              </li>
               <li>
                 <Link to="/Main" className="material-icons">
                   restaurant_menu MENU{" "}
@@ -89,6 +84,12 @@ class Main extends Component {
 
           <div className="white right-container">
             <h1>Welcome to the pub</h1>
+            <h1>
+              Freeman's Pub, An Irish-American Public House is in Historic
+              Downtown Gastonia. We have 70 plus bottle beer, 5 draft and over
+              25 whiskys. Come see the hot spot in Downtown G Town. Live music
+              Thursday-Saturday. Check events for updates!
+            </h1>
           </div>
         </div>
       </div>

@@ -43,23 +43,19 @@ class Register extends Component {
   render() {
       var displayEvents = events.map((eachitem,index)=> 
         <div>
-      <p className="event-list" key={index}>{eachitem.name}</p>
-      <p className="event-list" key={index}>{eachitem.date}</p>
-      <p className="event-list" key={index}>{eachitem.time}</p>
+      <p className="list-data" key={index}>{eachitem.name}</p>
+      <p className="list-data" key={index}>{eachitem.date}</p>
+      <p className="list-data" key={index}>{eachitem.time}</p>
         </div>
     )
     return (
       <div>
       <div id="main-container">
       <div className = "sideBar" >
-        <h1>
+         <Link className="logo-name" to="/">  
           <img className = "Logo" src = {
-            "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Charmed_1998_logo.svg/528px-Charmed_1998_logo.svg.png"} alt = "freeman's"/>Freemans Pub 
-        </h1>
+            "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Charmed_1998_logo.svg/528px-Charmed_1998_logo.svg.png"} alt = "freeman's"/>Freemans Pub </Link>
         <ul>
-          <li>
-            <Link to = "/Main" className = "material-icons" >info ABOUT </Link> 
-          </li> 
           <li>
             <Link to = "/Main" className = "material-icons">restaurant_menu MENU </Link> 
           </li> 

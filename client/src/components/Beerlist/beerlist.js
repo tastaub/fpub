@@ -45,20 +45,17 @@ class Register extends Component {
   render() {
       
       var displayBeers = beers.map((eachitem,index)=> 
-     <p key={index} className="event-list">{eachitem}</p>
+     <p key={index} className="list-data">{eachitem}</p>
     )
     return (
       <div>
       <div id="main-container">
       <div className = "sideBar" >
-        <h1>
+      <Link className="logo-name" to="/">
           <img className = "Logo" src = {
             "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Charmed_1998_logo.svg/528px-Charmed_1998_logo.svg.png"} alt = "freeman's"/>Freemans Pub 
-        </h1>
+        </Link>
         <ul>
-          <li>
-            <Link to = "/Main" className = "material-icons" >info ABOUT </Link> 
-          </li> 
           <li>
             <Link to = "/Main" className = "material-icons">restaurant_menu MENU </Link> 
           </li> 
