@@ -32,6 +32,9 @@ var beers=[
 ]
 class Register extends Component {
 
+  componentDidMount() {
+    API.getFood
+  }
 
   render() {
       
