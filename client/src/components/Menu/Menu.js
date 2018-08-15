@@ -30,8 +30,11 @@ var beers=[
     price: "much more to come!"
    }
 ]
-class Register extends Component {
+class Menu extends Component {
 
+  componentDidMount() {
+    API.getFood
+  }
 
   render() {
       
@@ -97,4 +100,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default Menu;

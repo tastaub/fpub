@@ -49,9 +49,6 @@ class Main extends Component {
                 <br />
                 173 W Main Ave Gastonia, NC
               </h2>
-              <br />
-              <br />
-              <br />
 
               <div>
                 <p className="contact">

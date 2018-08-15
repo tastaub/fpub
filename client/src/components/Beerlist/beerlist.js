@@ -16,31 +16,34 @@ var beers=[
     "Hook & Ladder Golden Ale",
     "Leinenkugel's Sunset Ale",
     "Blue Moon Belgian White",
-    "Magic Hat #9"
-    // George Killian's Red
-    // Bass Pale Ale
-    // Mc Sorley's Irish Pale Ale
-    // Pilsner Urquell
-    // Dogfish Head 90 Minutes IPA
-    // Highland Gaelic Ale
-    // Bell Haven Scottish Ale
-    // Newcastle Brown Ale
-    // Old Speckled Hen
-    // Boddington's Pub Ale
-    // 1 pint
-    // Stella Artois
-    // Chimay Blue
-    // 9%
-    // Wells Bombardier
-    // 16.9 oz
-    // Bud Light
-    // Miller Lite
-    // Michelob Ultra
-    // Yuengling Lager
-    // Corona
+    "Magic Hat #9",
+    "George Killian's Red",
+    "Bass Pale Ale",
+    "Mc Sorley's Irish Pale Ale",
+    "Pilsner Urquell",
+    "Dogfish Head 90 Minutes IPA",
+    "Highland Gaelic Ale",
+    "Bell Haven Scottish Ale",
+    "Newcastle Brown Ale",
+    "Old Speckled Hen",
+    "Boddington's Pub Ale",
+    "1 pint",
+    "Stella Artois",
+    "Chimay Blue",
+    "9%",
+    "Wells Bombardier",
+    "16.9 oz",
+    "Bud Light",
+    "Miller Lite",
+    "Michelob Ultra",
+    "Yuengling Lager",
+    "Corona"
 ]
-class Register extends Component {
+class beerlist extends Component {
 
+  // componentDidMount() {
+  //   API.getDrinks
+  // }
 
   render() {
       
@@ -103,4 +106,5 @@ class Register extends Component {
   }
 }
 
-export default Register;
+
+export default beerlist;

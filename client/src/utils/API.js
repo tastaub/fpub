@@ -1,10 +1,21 @@
 import axios from "axios";
 
 export default {
-  register: admin => axios.post("/api/admin/register", admin),
+  getFood: axios
+    .get("/api/food")
+    .then(data => console.log(data))
+    .catch(err => console.log(err)),
 
-  login: admin => axios.post("/api/admin/login", admin),
+  getDrinks: axios
+  .get("/api/drinks")
+  .then(data => console.log(data))
+  .catch(err => console.log(err)),
 
-  setHeaderToken: token =>
-    (axios.defaults.headers.common["Authorization"] = token)
+  getEvents: axios
+  .get("api/events")
+  .then(data => console.log(data))
+  .catch(err => console.log(err))
+  
 };
+
+

@@ -3,6 +3,7 @@
    color: white;
  }
 * {
+  flex-wrap: wrap;
   padding: 0%;
   margin: 0%;
 }
@@ -20,8 +21,11 @@ h1{
   font-family: "Irish Grover", cursive !important;
 }
 .pubPics{
-  height: 20%;
-  width: 20%;
+  height: 25%;
+  width: 25%;
+  border: 10px solid #aaaaaa;
+  padding: 5px;
+
 }
 .sideBar {
   background: rgb(45, 70, 41);
@@ -31,16 +35,18 @@ h1{
 #main-container {
   display: grid;
   grid-template-columns: 1fr 4fr;
+  max-height: 95vh;
 }
 
 .right-container{
+  overflow: auto;
   background: rgba(0, 0, 0, 0.418);
   border-radius: 30%;
   margin-top: 3vh;
-  padding: 40px;
+  padding: 40px;  
   margin-right: 40px;
   margin-left: 40px;
-  max-height: 95%;
+  max-height: 95vh;
 }
 .list-data {
   font-size: 20px;
@@ -112,3 +118,6 @@ div ul li a:hover {
     transform: rotate(360deg);
   }
 }
+
+
+
