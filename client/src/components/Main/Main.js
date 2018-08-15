@@ -2,10 +2,38 @@ import React, { Component } from "react";
 import { Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
+
 import "../Main/Main.css";
 
 class Main extends Component {
+  onLogoutClick(e) {
+    e.preventDefault();
+    this.props.logoutUser();
+  }
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
+    const isLogin = (
+      <li>
+        <Link to="/login" className="material-icons">
+          perm_identity LOGIN{" "}
+        </Link>
+      </li>
+    );
+    const isLogout = (
+      <li>
+        <Link
+          to="/"
+          className="material-icons"
+          onClick={this.onLogoutClick.bind(this)}
+        >
+          perm_identity LOGOUT{" "}
+        </Link>
+      </li>
+    );
     return (
       <div>
         <div id="main-container">
@@ -38,11 +66,7 @@ class Main extends Component {
                   event EVENTS{" "}
                 </Link>
               </li>
-              <li>
-                <Link to="/login" className="material-icons">
-                  perm_identity LOGIN{" "}
-                </Link>
-              </li>
+              {isAuthenticated ? isLogout : isLogin}
               <h2 className="white">
                 (704) 671-4782
                 <br />
@@ -113,4 +137,16 @@ class Main extends Component {
   }
 }
 
-export default Main;
+Main.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Main);
