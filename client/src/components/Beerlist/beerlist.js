@@ -41,6 +41,9 @@ var beers=[
 ]
 class Register extends Component {
 
+  componentDidMount {
+    API.getDrinks
+  }
 
   render() {
       
@@ -101,6 +104,6 @@ class Register extends Component {
 
     );
   }
-}
+
 
 export default Register;
