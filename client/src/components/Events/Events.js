@@ -32,6 +32,21 @@ var events=[
     name: "Sticky Bandits",
     date: "JUL 21",
     time: "9:30"  
+    },
+  {
+    name: "Sticky Bandits",
+    date: "JUL 21",
+    time: "9:30"  
+    },
+  {
+    name: "Sticky Bandits",
+    date: "JUL 21",
+    time: "9:30"  
+    },
+  {
+    name: "Sticky Bandits",
+    date: "JUL 21",
+    time: "9:30"  
     }
 
 
