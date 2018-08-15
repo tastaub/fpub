@@ -9,7 +9,7 @@ import store from "./store";
 
 import "./App.css";
 
-import Register from "./components/auth/Register";
+// import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Main from "./components/Main/Main";
 import Beerlist from "./components/Beerlist/beerlist";
@@ -43,11 +43,13 @@ class App extends Component {
         <Router>
           <div className="App">
             <Route exact path="/" component={Main} />
-            <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/beerlist" component={Beerlist} />
             <Route exact path="/events" component={Events} />
             <Route exact path="/Menu" component={Menu} />
+            {/* <Route exact path="/add/food" component={FoodAdmin} />
+            <Route exact path="/add/beer" component={BeerAdmin} />
+            <Route exact path="/add/events" component={EventsAdmin} /> */}
           </div>
         </Router>
       </Provider>
