@@ -39,11 +39,11 @@ var beers=[
     "Yuengling Lager",
     "Corona"
 ]
-class Register extends Component {
+class beerlist extends Component {
 
-  componentDidMount {
-    API.getDrinks
-  }
+  // componentDidMount() {
+  //   API.getDrinks
+  // }
 
   render() {
       
@@ -104,6 +104,7 @@ class Register extends Component {
 
     );
   }
+}
 
 
-export default Register;
+export default beerlist;
