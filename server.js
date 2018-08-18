@@ -35,8 +35,6 @@ if (process.env.NODE_ENV === "production") {
 
 //Use Routes
 app.use("/api/admin", admin);
-app.use("/api/users", users);
-// app.use("/api/profile", profile);
 app.use("/api/post", post);
 
 // Send every request to the React app
