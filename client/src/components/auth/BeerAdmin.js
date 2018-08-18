@@ -12,8 +12,8 @@ class BeerAdmin extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
+      beer: "",
+      price: "",
       errors: {}
     };
 
@@ -41,8 +41,8 @@ class BeerAdmin extends Component {
     e.preventDefault();
 
     const userData = {
-      name: this.state.email,
-      price: this.state.password
+      name: this.state.beer,
+      price: this.state.price
     };
 
     this.props.loginUser(userData);
@@ -60,36 +60,36 @@ class BeerAdmin extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Beer</h1>
+              <h1 className="display-4 text-center white">Add Beer</h1>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
                     type="beer"
                     className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.email
+                      "is-invalid": errors.beer
                     })}
-                    placeholder="Email Address"
+                    placeholder="Add Beer Name"
                     name="price"
-                    value={this.state.email}
+                    value={this.state.beer}
                     onChange={this.onChange}
                   />
                   {errors.email && (
-                    <div className="invalid-feedback">{errors.email}</div>
+                    <div className="invalid-feedback">{errors.beer}</div>
                   )}
                 </div>
                 <div className="form-group">
                   <input
-                    type="password"
+                    type="number" min="1" step="any"
                     className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.password
+                      "is-invalid": errors.price
                     })}
-                    placeholder="Password"
+                    placeholder="Whats The Price"
                     name="password"
-                    value={this.state.password}
+                    value={this.state.price}
                     onChange={this.onChange}
                   />
-                  {errors.password && (
-                    <div className="invalid-feedback">{errors.password}</div>
+                  {errors.price && (
+                    <div className="invalid-feedback">{errors.price}</div>
                   )}
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />

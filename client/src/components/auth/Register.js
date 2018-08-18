@@ -54,6 +54,7 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
+<<<<<<< HEAD
       <div>
         <Navbar />
         <div className="register">
@@ -122,6 +123,15 @@ class Register extends Component {
                       <div className="invalid-feedback">{errors.password2}</div>
                     )}
                   </div>
+=======
+      <div className="register">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8 m-auto">
+              <h1 className="display-4 text-center white">Sign Up</h1>
+              <form noValidate onSubmit={this.onSubmit}>
+                <div className="form-group">
+>>>>>>> 24706da03360ec94ca68b3f1263a26829ffefbbf
                   <input
                     type="submit"
                     className="btn btn-info btn-block mt-4"
