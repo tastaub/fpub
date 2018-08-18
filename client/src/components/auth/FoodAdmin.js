@@ -13,7 +13,8 @@ class FoodAdmin extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: {}
+      errors: {},
+      food: []
     };
 
     this.onChange = this.onChange.bind(this);
