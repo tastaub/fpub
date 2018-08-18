@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
+
 import Navbar from "./Navbar";
 import beerlist from "../Beerlist/beerlist";
 
@@ -47,6 +48,8 @@ class BeerAdmin extends Component {
 
     this.props.loginUser(userData);
   }
+  PostBeer() { }
+
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -64,16 +67,16 @@ class BeerAdmin extends Component {
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
-                    type="beer"
+                    type="string"
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.beer
                     })}
                     placeholder="Add Beer Name"
-                    name="price"
+                    name="beer"
                     value={this.state.beer}
                     onChange={this.onChange}
                   />
-                  {errors.email && (
+                  {errors.beer && (
                     <div className="invalid-feedback">{errors.beer}</div>
                   )}
                 </div>
@@ -84,7 +87,7 @@ class BeerAdmin extends Component {
                       "is-invalid": errors.price
                     })}
                     placeholder="Whats The Price"
-                    name="password"
+                    name="price"
                     value={this.state.price}
                     onChange={this.onChange}
                   />

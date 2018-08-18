@@ -68,7 +68,7 @@ class EventsAdmin extends Component {
                       "is-invalid": errors.eventName
                     })}
                     placeholder="Add New Event"
-                    name="event"
+                    name="eventName"
                     value={this.state.eventName}
                     onChange={this.onChange}
                   />
