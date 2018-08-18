@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
-import "../Main/Main.css";
 import Navbar from "./Navbar";
+import beerlist from "../Beerlist/beerlist";
 
-class Main extends Component {
+class BeerAdmin extends Component {
   constructor() {
     super();
     this.state = {
@@ -116,7 +116,7 @@ class Main extends Component {
   }
 }
 
-Main.propTypes = {
+BeerAdmin.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -128,4 +128,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Main);
+)(BeerAdmin);

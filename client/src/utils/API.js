@@ -1,21 +1,12 @@
 import axios from "axios";
 
 export default {
-  getFood: axios
-    .get("/api/food")
-    .then(data => console.log(data))
-    .catch(err => console.log(err)),
-
-  getDrinks: axios
-  .get("/api/drinks")
-  .then(data => console.log(data))
-  .catch(err => console.log(err)),
-
-  getEvents: axios
-  .get("api/events")
-  .then(data => console.log(data))
-  .catch(err => console.log(err))
-  
+  // Get Routes
+  getFood: () => axios.get("/api/post/food"),
+  getBeer: () => axios.get("/api/post/beer"),
+  getEvents: () => axios.get("/api/post/events"),
+  //Post Routes
+  postFood: newFood => axios.post("/api/post/food", newFood),
+  postBeer: newBeer => axios.post("/api/post/beer", newBeer),
+  postEvents: newEvents => axios.post("/api/post/events", newEvents)
 };
-
-

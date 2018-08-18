@@ -11,9 +11,10 @@ class FoodAdmin extends Component {
   constructor() {
     super();
     this.state = {
-      menuItem: "",
-      price: "",
-      errors: {}
+      email: "",
+      password: "",
+      errors: {},
+      food: []
     };
 
     this.onChange = this.onChange.bind(this);
