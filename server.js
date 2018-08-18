@@ -28,11 +28,22 @@ app.use(passport.initialize());
 //Passport Config
 require("./config/passport.js")(passport);
 
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 //Use Routes
 app.use("/api/admin", admin);
 app.use("/api/users", users);
 // app.use("/api/profile", profile);
 app.use("/api/post", post);
+
+// Send every request to the React app
+// Define any API routes before this runs
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 const port = process.env.PORT || 5000;
 
