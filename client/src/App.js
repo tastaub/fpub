@@ -9,8 +9,11 @@ import store from "./store";
 
 import "./App.css";
 
-// import Register from "./components/auth/Register";
+import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import BeerAdmin from "./components/auth/BeerAdmin";
+import FoodAdmin from "./components/auth/FoodAdmin";
+import EventsAdmin from "./components/auth/EventsAdmin";
 import Main from "./components/Main/Main";
 import Beerlist from "./components/Beerlist/beerlist";
 import Events from "./components/Events/Events";
@@ -47,9 +50,10 @@ class App extends Component {
             <Route exact path="/beerlist" component={Beerlist} />
             <Route exact path="/events" component={Events} />
             <Route exact path="/Menu" component={Menu} />
-            {/* <Route exact path="/add/food" component={FoodAdmin} />
-            <Route exact path="/add/beer" component={BeerAdmin} />
-            <Route exact path="/add/events" component={EventsAdmin} /> */}
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/addFood" component={FoodAdmin} />
+            <Route exact path="/addBeer" component={BeerAdmin} />
+            <Route exact path="/addEvents" component={EventsAdmin} />
           </div>
         </Router>
       </Provider>

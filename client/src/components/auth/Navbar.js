@@ -22,7 +22,7 @@ export default class Navbar extends Component {
           </Menu.Item>
         </Link>
 
-        <Link to="add/food">
+        <Link to="addFood">
           <Menu.Item
             name="food"
             active={activeItem === "food"}
@@ -32,7 +32,7 @@ export default class Navbar extends Component {
           </Menu.Item>
         </Link>
 
-        <Link to="add/beer">
+        <Link to="addBeer">
           <Menu.Item
             name="beer"
             active={activeItem === "beer"}
@@ -42,7 +42,7 @@ export default class Navbar extends Component {
           </Menu.Item>
         </Link>
 
-        <Link to="add/events">
+        <Link to="addEvents">
           <Menu.Item
             name="events"
             active={activeItem === "events"}
