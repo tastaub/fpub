@@ -11,8 +11,8 @@ class EventsAdmin extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
+      eventName: "",
+      date: "",
       errors: {}
     };
 
@@ -40,8 +40,8 @@ class EventsAdmin extends Component {
     e.preventDefault();
 
     const userData = {
-      name: this.state.email,
-      price: this.state.password
+      eventName: this.state.eventName,
+      date: this.state.date
     };
 
     this.props.loginUser(userData);
@@ -59,36 +59,36 @@ class EventsAdmin extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Beer</h1>
+              <h1 className="display-4 text-center white">Add New Event</h1>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
-                    type="beer"
+                    type="Event"
                     className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.email
+                      "is-invalid": errors.eventName
                     })}
-                    placeholder="Email Address"
-                    name="price"
-                    value={this.state.email}
+                    placeholder="Add New Event"
+                    name="event"
+                    value={this.state.eventName}
                     onChange={this.onChange}
                   />
-                  {errors.email && (
-                    <div className="invalid-feedback">{errors.email}</div>
+                  {errors.eventName && (
+                    <div className="invalid-feedback">{errors.eventName}</div>
                   )}
                 </div>
                 <div className="form-group">
                   <input
-                    type="password"
+                    type="date"
                     className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.password
+                      "is-invalid": errors.date
                     })}
-                    placeholder="Password"
-                    name="password"
-                    value={this.state.password}
+                    placeholder="Event Date"
+                    name="date"
+                    value={this.state.date}
                     onChange={this.onChange}
                   />
-                  {errors.password && (
-                    <div className="invalid-feedback">{errors.password}</div>
+                  {errors.date && (
+                    <div className="invalid-feedback">{errors.date}</div>
                   )}
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />

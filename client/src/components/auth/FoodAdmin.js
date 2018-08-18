@@ -11,8 +11,8 @@ class FoodAdmin extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
+      menuItem: "",
+      price: "",
       errors: {}
     };
 
@@ -40,8 +40,8 @@ class FoodAdmin extends Component {
     e.preventDefault();
 
     const userData = {
-      name: this.state.email,
-      price: this.state.password
+      name: this.state.menuItem,
+      price: this.state.price
     };
 
     this.props.loginUser(userData);
@@ -59,36 +59,35 @@ class FoodAdmin extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Beer</h1>
+              <h1 className="display-4 text-center white">Add New Menu Item</h1>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
-                    type="beer"
+                    type="meunitem"
                     className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.email
+                      "is-invalid": errors.menuItem
                     })}
-                    placeholder="Email Address"
-                    name="price"
-                    value={this.state.email}
+                    placeholder="Add New Menu Item"
+                    name="food"
+                    value={this.state.menuItem}
                     onChange={this.onChange}
                   />
-                  {errors.email && (
-                    <div className="invalid-feedback">{errors.email}</div>
+                  {errors.menuItem && (
+                    <div className="invalid-feedback">{errors.menuItem}</div>
                   )}
                 </div>
                 <div className="form-group">
                   <input
-                    type="password"
+                    type="number" min="1" step="any"
                     className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.password
-                    })}
-                    placeholder="Password"
-                    name="password"
-                    value={this.state.password}
+                      "is-invalid": errors.Price})}
+                    placeholder="Menu Item's Price"
+                    name="price"
+                    value={this.state.price}
                     onChange={this.onChange}
                   />
-                  {errors.password && (
-                    <div className="invalid-feedback">{errors.password}</div>
+                  {errors.price && (
+                    <div className="invalid-feedback">{errors.price}</div>
                   )}
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />

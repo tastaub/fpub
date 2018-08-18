@@ -11,7 +11,7 @@ export default class Navbar extends Component {
     const { activeItem } = this.state;
 
     return (
-      <Menu>
+      <div className="ui blue three item inverted menu"> 
         <Link to="register">
           <Menu.Item
             name="register"
@@ -51,7 +51,7 @@ export default class Navbar extends Component {
             Add Events
           </Menu.Item>
         </Link>
-      </Menu>
+      </div>
     );
   }
 }
