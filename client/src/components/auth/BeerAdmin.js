@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
-
 import Navbar from "./Navbar";
 import beerlist from "../Beerlist/beerlist";
 
@@ -48,8 +47,7 @@ class BeerAdmin extends Component {
 
     this.props.loginUser(userData);
   }
-  PostBeer() { }
-
+ 
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });

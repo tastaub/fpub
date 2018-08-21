@@ -45,7 +45,9 @@ class EventsAdmin extends Component {
     };
 
     this.props.loginUser(userData);
+  
   }
+
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
