@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import { Table, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+
+import API from "../../utils/API";
 
 import Navbar from "./Navbar";
 import beerlist from "../Beerlist/beerlist";
@@ -14,18 +17,23 @@ class BeerAdmin extends Component {
     this.state = {
       beer: "",
       price: "",
-      errors: {}
+      errors: {},
+      beers: []
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  //   componentDidMount() {
-  //     if (this.props.auth.isAuthenticated) {
-  //       this.props.history.push("/");
-  //     }
-  //   }
+  componentDidMount() {
+    this.loadBeer();
+  }
+
+  loadBeer() {
+    API.getBeer().then(res =>
+      this.setState({ beers: res.data, beer: "", price: "" })
+    );
+  }
 
   //   componentWillReceiveProps(nextProps) {
   //     if (nextProps.auth.isAuthenticated) {
@@ -37,17 +45,20 @@ class BeerAdmin extends Component {
   //     }
   //   }
 
+  onEdit() {
+    console.log("clicked");
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
-    const userData = {
+    const beerData = {
       name: this.state.beer,
       price: this.state.price
     };
 
-    this.props.loginUser(userData);
+    API.postBeer(beerData).then(this.loadBeer());
   }
- 
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -57,8 +68,8 @@ class BeerAdmin extends Component {
     const { errors } = this.state;
 
     const isUser = (
-      <div className="login">
-        <div className="container">
+      <div className="container">
+        <div className="login">
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center white">Add Beer</h1>
@@ -80,7 +91,9 @@ class BeerAdmin extends Component {
                 </div>
                 <div className="form-group">
                   <input
-                    type="number" min="1" step="any"
+                    type="number"
+                    min="1"
+                    step="any"
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.price
                     })}
@@ -97,6 +110,28 @@ class BeerAdmin extends Component {
               </form>
             </div>
           </div>
+        </div>
+        <div className="beer-table">
+          <Table celled>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Beer Name</Table.HeaderCell>
+                <Table.HeaderCell>Price</Table.HeaderCell>
+                <Table.HeaderCell>Delete</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {this.state.beers.map(res => (
+                <Table.Row>
+                  <Table.Cell>{res.name}</Table.Cell>
+                  <Table.Cell>{res.price}</Table.Cell>
+                  <Table.Cell>
+                    <Icon name="delete" onClick={this.onEdit} />
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
         </div>
       </div>
     );

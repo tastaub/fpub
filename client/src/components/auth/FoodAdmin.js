@@ -1,18 +1,19 @@
 import React, { Component } from "react";
+import { Table, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-
+import API from "../../utils/API";
 import Navbar from "./Navbar";
 
 class FoodAdmin extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
+      menuItem: "",
+      price: "",
       errors: {},
       food: []
     };
@@ -21,11 +22,15 @@ class FoodAdmin extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  //   componentDidMount() {
-  //     if (this.props.auth.isAuthenticated) {
-  //       this.props.history.push("/");
-  //     }
-  //   }
+  componentDidMount() {
+    this.loadFood();
+  }
+
+  loadFood() {
+    API.getFood().then(res =>
+      this.setState({ food: res.data, menuItem: "", price: "" })
+    );
+  }
 
   //   componentWillReceiveProps(nextProps) {
   //     if (nextProps.auth.isAuthenticated) {
@@ -40,12 +45,12 @@ class FoodAdmin extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const userData = {
+    const foodData = {
       name: this.state.menuItem,
       price: this.state.price
     };
 
-    this.props.loginUser(userData);
+    API.postFood(foodData).then(this.loadFood());
   }
 
   onChange(e) {
@@ -56,20 +61,20 @@ class FoodAdmin extends Component {
     const { errors } = this.state;
 
     const isUser = (
-      <div className="login">
-        <div className="container">
+      <div className="container">
+        <div className="login">
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center white">Add New Menu Item</h1>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
-                    type="meunitem"
+                    type="string"
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.menuItem
                     })}
                     placeholder="Add New Menu Item"
-                    name="food"
+                    name="menuItem"
                     value={this.state.menuItem}
                     onChange={this.onChange}
                   />
@@ -79,9 +84,12 @@ class FoodAdmin extends Component {
                 </div>
                 <div className="form-group">
                   <input
-                    type="number" min="1" step="any"
+                    type="number"
+                    min="1"
+                    step="any"
                     className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.Price})}
+                      "is-invalid": errors.price
+                    })}
                     placeholder="Menu Item's Price"
                     name="price"
                     value={this.state.price}
@@ -95,6 +103,28 @@ class FoodAdmin extends Component {
               </form>
             </div>
           </div>
+        </div>
+        <div className="beer-table">
+          <Table celled>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Beer Name</Table.HeaderCell>
+                <Table.HeaderCell>Price</Table.HeaderCell>
+                <Table.HeaderCell>Delete</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {this.state.food.map(res => (
+                <Table.Row>
+                  <Table.Cell>{res.name}</Table.Cell>
+                  <Table.Cell>{res.price}</Table.Cell>
+                  <Table.Cell>
+                    <Icon name="delete" />
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
         </div>
       </div>
     );
