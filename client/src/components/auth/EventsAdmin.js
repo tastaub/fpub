@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Table, Icon } from "semantic-ui-react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -18,6 +19,16 @@ class EventsAdmin extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadBeer();
+  }
+
+  loadBeer() {
+    API.getBeer().then(res =>
+      this.setState({ beers: res.data, beer: "", price: "" })
+    );
   }
 
   //   componentDidMount() {
@@ -95,6 +106,28 @@ class EventsAdmin extends Component {
               </form>
             </div>
           </div>
+        </div>
+        <div className="beer-table">
+          <Table celled>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Beer Name</Table.HeaderCell>
+                <Table.HeaderCell>Price</Table.HeaderCell>
+                <Table.HeaderCell>Delete</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {this.state.beers.map(res => (
+                <Table.Row>
+                  <Table.Cell>{res.name}</Table.Cell>
+                  <Table.Cell>{res.price}</Table.Cell>
+                  <Table.Cell>
+                    <Icon name="delete" onClick={this.onEdit} />
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
         </div>
       </div>
     );
