@@ -26,6 +26,14 @@ router.post("/beer", (req, res) => {
   Beer.create(newBeer).then(data => res.json(data));
 });
 
+// @route GET api/post/getbeer
+// @desc Get all beers in db
+// @access Public
+router.delete("/beer/:id", (req, res) => {
+  let id = req.params.id;
+  Beer.findByIdAndRemove(id).then(data => res.json(data));
+});
+
 // @route GET api/post/getfood
 // @desc Get all food in db
 // @access Public
@@ -45,6 +53,14 @@ router.post("/food", (req, res) => {
   let newFood = req.body;
   console.log(newFood);
   Food.create(newFood).then(data => res.json(data));
+});
+
+// @route GET api/post/getbeer
+// @desc Get all beers in db
+// @access Public
+router.delete("/food/:id", (req, res) => {
+  let id = req.params.id;
+  Food.findByIdAndRemove(id).then(data => res.json(data));
 });
 
 // @route GET api/post/events

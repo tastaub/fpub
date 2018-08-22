@@ -20,6 +20,7 @@ class FoodAdmin extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.deleteFood = this.deleteFood.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,12 @@ class FoodAdmin extends Component {
       this.setState({ food: res.data, menuItem: "", price: "" })
     );
   }
+
+  deleteFood = id => {
+    API.deleteFood(id)
+      .then(res => this.loadFood())
+      .catch(err => console.log(err));
+  };
 
   //   componentWillReceiveProps(nextProps) {
   //     if (nextProps.auth.isAuthenticated) {
@@ -119,7 +126,10 @@ class FoodAdmin extends Component {
                   <Table.Cell>{res.name}</Table.Cell>
                   <Table.Cell>{res.price}</Table.Cell>
                   <Table.Cell>
-                    <Icon name="delete" />
+                    <Icon
+                      name="delete"
+                      onClick={() => this.deleteFood(res._id)}
+                    />
                   </Table.Cell>
                 </Table.Row>
               ))}

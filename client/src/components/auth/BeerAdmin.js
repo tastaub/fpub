@@ -35,6 +35,12 @@ class BeerAdmin extends Component {
     );
   }
 
+  deleteBeer = id => {
+    API.deleteBeer(id)
+      .then(res => this.loadBeer())
+      .catch(err => console.log(err));
+  };
+
   //   componentWillReceiveProps(nextProps) {
   //     if (nextProps.auth.isAuthenticated) {
   //       this.props.history.push("/");
@@ -126,7 +132,10 @@ class BeerAdmin extends Component {
                   <Table.Cell>{res.name}</Table.Cell>
                   <Table.Cell>{res.price}</Table.Cell>
                   <Table.Cell>
-                    <Icon name="delete" onClick={this.onEdit} />
+                    <Icon
+                      name="delete"
+                      onClick={() => this.deleteBeer(res._id)}
+                    />
                   </Table.Cell>
                 </Table.Row>
               ))}
