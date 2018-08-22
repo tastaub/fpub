@@ -11,5 +11,8 @@ export default {
   postEvents: newEvents => axios.post("/api/post/events", newEvents),
   //Delete Routes
   deleteFood: foodId => axios.delete("/api/post/food/" + foodId),
-  deleteBeer: beerId => axios.delete("/api/post/beer/" + beerId)
+  deleteBeer: beerId => axios.delete("/api/post/beer/" + beerId),
+
+  //Edit Routes
+  editFood: (foodId, newFood) => axios.post("/api/post/food/" + foodId, newFood)
 };

@@ -58,6 +58,21 @@ router.post("/food", (req, res) => {
 // @route GET api/post/getbeer
 // @desc Get all beers in db
 // @access Public
+router.post("/food/:id", (req, res) => {
+  let newFood = req.body;
+  let id = req.params.id;
+  console.log(newFood);
+  Food.findByIdAndUpdate(id, newFood, { new: true }, (err, response) => {
+    if (err) {
+      res.json(err);
+    }
+    res.json(response);
+  });
+});
+
+// @route GET api/post/getbeer
+// @desc Get all beers in db
+// @access Public
 router.delete("/food/:id", (req, res) => {
   let id = req.params.id;
   Food.findByIdAndRemove(id).then(data => res.json(data));

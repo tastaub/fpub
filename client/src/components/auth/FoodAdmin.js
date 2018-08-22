@@ -15,12 +15,16 @@ class FoodAdmin extends Component {
       menuItem: "",
       price: "",
       errors: {},
-      food: []
+      food: [],
+      isEdit: false,
+      editID: ""
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.deleteFood = this.deleteFood.bind(this);
+    this.editFood = this.editFood.bind(this);
+    this.onEdit = this.onEdit.bind(this);
   }
 
   componentDidMount() {
@@ -29,15 +33,30 @@ class FoodAdmin extends Component {
 
   loadFood() {
     API.getFood().then(res =>
-      this.setState({ food: res.data, menuItem: "", price: "" })
+      this.setState({
+        food: res.data,
+        menuItem: "",
+        price: "",
+        isEdit: false,
+        editID: ""
+      })
     );
   }
 
-  deleteFood = id => {
+  deleteFood(id) {
     API.deleteFood(id)
       .then(res => this.loadFood())
       .catch(err => console.log(err));
-  };
+  }
+
+  editFood(res) {
+    this.setState({
+      menuItem: res.name,
+      price: res.price,
+      isEdit: true,
+      editID: res._id
+    });
+  }
 
   //   componentWillReceiveProps(nextProps) {
   //     if (nextProps.auth.isAuthenticated) {
@@ -60,6 +79,17 @@ class FoodAdmin extends Component {
     API.postFood(foodData).then(this.loadFood());
   }
 
+  onEdit(e) {
+    e.preventDefault();
+
+    const id = this.state.editID;
+    const foodData = {
+      name: this.state.menuItem,
+      price: this.state.price
+    };
+    API.editFood(id, foodData).then(this.loadFood());
+  }
+
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -73,7 +103,7 @@ class FoodAdmin extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center white">Add New Menu Item</h1>
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={!this.state.isEdit ? this.onSubmit : this.onEdit}>
                 <div className="form-group">
                   <input
                     type="string"
@@ -118,6 +148,7 @@ class FoodAdmin extends Component {
                 <Table.HeaderCell>Beer Name</Table.HeaderCell>
                 <Table.HeaderCell>Price</Table.HeaderCell>
                 <Table.HeaderCell>Delete</Table.HeaderCell>
+                <Table.HeaderCell>Update</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -130,6 +161,9 @@ class FoodAdmin extends Component {
                       name="delete"
                       onClick={() => this.deleteFood(res._id)}
                     />
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Icon name="edit" onClick={() => this.editFood(res)} />
                   </Table.Cell>
                 </Table.Row>
               ))}
