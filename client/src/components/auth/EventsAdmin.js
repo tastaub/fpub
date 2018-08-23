@@ -7,21 +7,25 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
 
-
 import Navbar from "./Navbar";
 
 class EventsAdmin extends Component {
   constructor() {
     super();
     this.state = {
+      eventName: "",
       date: "",
       errors: {},
-      events: []
+      events: [],
+      isEdit: false,
+      editID: ""
     };
-
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.deleteEvents = this.deleteEvents.bind(this);
+    this.editEvents = this.editEvents.bind(this);
+    this.onEdit = this.onEdit.bind(this);
   }
 
   componentDidMount() {
@@ -29,39 +33,57 @@ class EventsAdmin extends Component {
   }
 
   loadEvents() {
-    API.getEvents().then(res => {
-      this.setState({ events: res.data });
-    });
+    API.getEvents().then(
+      res =>
+        this.setState({
+          events: res.data,
+          eventName: "",
+          date: "",
+          isEdit: false,
+          editID: ""
+        }),
+      console.log(this.state)
+    );
   }
 
-  //   componentDidMount() {
-  //     if (this.props.auth.isAuthenticated) {
-  //       this.props.history.push("/");
-  //     }
-  //   }
+  deleteEvents(id) {
+    API.deleteEvents(id)
+      .then(res => this.loadEvents())
+      .catch(err => console.log(err));
+  }
 
-  //   componentWillReceiveProps(nextProps) {
-  //     if (nextProps.auth.isAuthenticated) {
-  //       this.props.history.push("/");
-  //     }
-
-  //     if (nextProps.errors) {
-  //       this.setState({ errors: nextProps.errors });
-  //     }
-  //   }
+  editEvents(res) {
+    this.setState({
+      eventName: res.name,
+      date: res.date,
+      isEdit: true,
+      editID: res._id
+    });
+  }
 
   onSubmit(e) {
     e.preventDefault();
 
     const eventData = {
       name: this.state.eventName,
-      date: this.state.date
+      price: this.state.date
     };
 
-    // this.props.loginUser(userData);
-    API.postEvents(eventData).then(this.loadEvents())
+    API.postFood(eventData).then(this.loadEvents());
   }
 
+  onEdit(e) {
+    e.preventDefault();
+
+    const id = this.state.editID;
+    const eventData = {
+      name: this.state.eventName,
+      price: this.state.date
+    };
+    API.editEvents(id, eventData)
+      .then(this.loadEvents())
+      .catch(err => console.log(err));
+  }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -76,7 +98,7 @@ class EventsAdmin extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center white">Add New Event</h1>
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={!this.state.isEdit ? this.onSubmit : this.onEdit}>
                 <div className="form-group">
                   <input
                     type="Event"
@@ -119,6 +141,7 @@ class EventsAdmin extends Component {
                 <Table.HeaderCell>Event Name</Table.HeaderCell>
                 <Table.HeaderCell>Date</Table.HeaderCell>
                 <Table.HeaderCell>Delete</Table.HeaderCell>
+                <Table.HeaderCell>Edit</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -127,7 +150,13 @@ class EventsAdmin extends Component {
                   <Table.Cell>{res.name}</Table.Cell>
                   <Table.Cell>{res.date}</Table.Cell>
                   <Table.Cell>
-                    <Icon name="delete" onClick={this.onEdit} />
+                    <Icon
+                      name="delete"
+                      onClick={() => this.deleteEvents(res._id)}
+                    />
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Icon name="edit" onClick={() => this.editEvents(res)} />
                   </Table.Cell>
                 </Table.Row>
               ))}
