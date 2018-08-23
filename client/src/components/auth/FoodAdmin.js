@@ -32,14 +32,16 @@ class FoodAdmin extends Component {
   }
 
   loadFood() {
-    API.getFood().then(res =>
-      this.setState({
-        food: res.data,
-        menuItem: "",
-        price: "",
-        isEdit: false,
-        editID: ""
-      })
+    API.getFood().then(
+      res =>
+        this.setState({
+          food: res.data,
+          menuItem: "",
+          price: "",
+          isEdit: false,
+          editID: ""
+        }),
+      console.log(this.state)
     );
   }
 
