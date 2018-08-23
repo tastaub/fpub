@@ -26,7 +26,7 @@ class EventsAdmin extends Component {
   }
 
   loadEvents() {
-    API.getEvent().then(res =>
+    API.getEvents().then(res =>
       this.setState({ beers: res.data, beer: "", price: "" })
     );
   }
