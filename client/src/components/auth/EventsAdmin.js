@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
-
 import Navbar from "./Navbar";
 
 class EventsAdmin extends Component {

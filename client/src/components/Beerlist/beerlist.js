@@ -143,8 +143,9 @@ class beerlist extends Component {
           <div className="white right-container">
             {this.state.beers.map(x => (
               <div>
-                <p className="list-data">{x.name}</p>
-                <p>{x.price}</p>
+                <p className="list-data">{x.name}:{'  '}   
+                {x.price}</p>
+                <br />
               </div>
             ))}
           </div>
