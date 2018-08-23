@@ -22,11 +22,11 @@ class EventsAdmin extends Component {
   }
 
   componentDidMount() {
-    this.loadBeer();
+    this.loadEvent();
   }
 
   loadBeer() {
-    API.getBeer().then(res =>
+    API.getEvent().then(res =>
       this.setState({ beers: res.data, beer: "", price: "" })
     );
   }
@@ -111,13 +111,13 @@ class EventsAdmin extends Component {
           <Table celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Beer Name</Table.HeaderCell>
-                <Table.HeaderCell>Price</Table.HeaderCell>
+                <Table.HeaderCell>Event</Table.HeaderCell>
+                <Table.HeaderCell>Date</Table.HeaderCell>
                 <Table.HeaderCell>Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {this.state.beers.map(res => (
+              {this.state.events.map(res => (
                 <Table.Row>
                   <Table.Cell>{res.name}</Table.Cell>
                   <Table.Cell>{res.price}</Table.Cell>
