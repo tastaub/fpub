@@ -32,14 +32,16 @@ class FoodAdmin extends Component {
   }
 
   loadFood() {
-    API.getFood().then(res =>
-      this.setState({
-        food: res.data,
-        menuItem: "",
-        price: "",
-        isEdit: false,
-        editID: ""
-      })
+    API.getFood().then(
+      res =>
+        this.setState({
+          food: res.data,
+          menuItem: "",
+          price: "",
+          isEdit: false,
+          editID: ""
+        }),
+      console.log(this.state)
     );
   }
 
@@ -87,7 +89,9 @@ class FoodAdmin extends Component {
       name: this.state.menuItem,
       price: this.state.price
     };
-    API.editFood(id, foodData).then(this.loadFood());
+    API.editFood(id, foodData)
+      .then(this.loadFood())
+      .catch(err => console.log(err));
   }
 
   onChange(e) {
@@ -153,7 +157,7 @@ class FoodAdmin extends Component {
             </Table.Header>
             <Table.Body>
               {this.state.food.map(res => (
-                <Table.Row>
+                <Table.Row key={res._id}>
                   <Table.Cell>{res.name}</Table.Cell>
                   <Table.Cell>{res.price}</Table.Cell>
                   <Table.Cell>
