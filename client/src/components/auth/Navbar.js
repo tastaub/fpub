@@ -11,7 +11,12 @@ export default class Navbar extends Component {
     const { activeItem } = this.state;
 
     return (
-      <div className="ui blue three item inverted menu"> 
+      <div className="ui blue three item inverted menu">
+        <Link to="/">
+          <Menu.Item name="home" onClick={this.handleItemClick}>
+            Home
+          </Menu.Item>
+        </Link>
         <Link to="register">
           <Menu.Item
             name="register"
