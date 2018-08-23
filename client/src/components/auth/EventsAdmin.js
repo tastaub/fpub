@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Table, Icon } from "semantic-ui-react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import API from "../../utils/API";
+
 
 import Navbar from "./Navbar";
 
@@ -11,13 +14,24 @@ class EventsAdmin extends Component {
   constructor() {
     super();
     this.state = {
-      eventName: "",
       date: "",
-      errors: {}
+      errors: {},
+      events: []
     };
+
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadEvents();
+  }
+
+  loadEvents() {
+    API.getEvents().then(res => {
+      this.setState({ events: res.data });
+    });
   }
 
   //   componentDidMount() {
@@ -39,13 +53,13 @@ class EventsAdmin extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const userData = {
-      eventName: this.state.eventName,
+    const eventData = {
+      name: this.state.eventName,
       date: this.state.date
     };
 
-    this.props.loginUser(userData);
-  
+    // this.props.loginUser(userData);
+    API.postEvents(eventData).then(this.loadEvents())
   }
 
 
@@ -97,6 +111,28 @@ class EventsAdmin extends Component {
               </form>
             </div>
           </div>
+        </div>
+        <div className="beer-table">
+          <Table celled>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Event Name</Table.HeaderCell>
+                <Table.HeaderCell>Date</Table.HeaderCell>
+                <Table.HeaderCell>Delete</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {this.state.events.map(res => (
+                <Table.Row>
+                  <Table.Cell>{res.name}</Table.Cell>
+                  <Table.Cell>{res.date}</Table.Cell>
+                  <Table.Cell>
+                    <Icon name="delete" onClick={this.onEdit} />
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
         </div>
       </div>
     );
