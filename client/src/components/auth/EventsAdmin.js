@@ -26,9 +26,9 @@ class EventsAdmin extends Component {
   }
 
   loadEvents() {
-    API.getEvents().then(res =>
+    API.getEvents().then(res => {
       this.setState({ events: res.data });
-    );
+    });
   }
 
   //   componentDidMount() {
