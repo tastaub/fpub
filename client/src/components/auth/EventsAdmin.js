@@ -22,10 +22,10 @@ class EventsAdmin extends Component {
   }
 
   componentDidMount() {
-    this.loadEvent();
+    this.loadEvents();
   }
 
-  loadEvent() {
+  loadEvents() {
     API.getEvent().then(res =>
       this.setState({ beers: res.data, beer: "", price: "" })
     );
@@ -111,7 +111,7 @@ class EventsAdmin extends Component {
           <Table celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Event</Table.HeaderCell>
+                <Table.HeaderCell>Event Name</Table.HeaderCell>
                 <Table.HeaderCell>Date</Table.HeaderCell>
                 <Table.HeaderCell>Delete</Table.HeaderCell>
               </Table.Row>
@@ -120,7 +120,7 @@ class EventsAdmin extends Component {
               {this.state.events.map(res => (
                 <Table.Row>
                   <Table.Cell>{res.name}</Table.Cell>
-                  <Table.Cell>{res.price}</Table.Cell>
+                  <Table.Cell>{res.date}</Table.Cell>
                   <Table.Cell>
                     <Icon name="delete" onClick={this.onEdit} />
                   </Table.Cell>
