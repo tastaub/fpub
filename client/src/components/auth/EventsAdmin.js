@@ -6,8 +6,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
-
-
 import Navbar from "./Navbar";
 
 class EventsAdmin extends Component {
@@ -33,6 +31,7 @@ class EventsAdmin extends Component {
       this.setState({ events: res.data });
     });
   }
+
 
   //   componentDidMount() {
   //     if (this.props.auth.isAuthenticated) {
@@ -67,6 +66,7 @@ class EventsAdmin extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
   render() {
+
     const { isAuthenticated, user } = this.props.auth;
     const { errors } = this.state;
 
