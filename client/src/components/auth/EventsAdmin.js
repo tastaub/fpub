@@ -128,12 +128,12 @@ class EventsAdmin extends Component {
                     <div className="invalid-feedback">{errors.date}</div>
                   )}
                 </div>
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input style={{marginBottom:"5%"}}  type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
           </div>
         </div>
-        <div className="beer-table">
+        <div style={{overflow:"scroll", height:"45vh"}} className="beer-table">
           <Table celled>
             <Table.Header>
               <Table.Row>
