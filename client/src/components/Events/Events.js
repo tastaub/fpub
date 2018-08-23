@@ -53,6 +53,22 @@ var events = [
 
 ]
 class Events extends Component {
+  constructor() {
+    super();
+    this.state = {
+      events: []
+    };
+  }
+
+  componentDidMount() {
+    this.loadEvents();
+  }
+
+  loadEvents() {
+    API.getEvents().then(res => {
+      this.setState({ events: res.data });
+    });
+  }
 
 
   render() {
@@ -108,7 +124,13 @@ class Events extends Component {
             </ul>
           </div>
 
-          <div className="white right-container">{displayEvents}</div>
+          <div className="white right-container">
+            {this.state.events.map(x => (
+              <div>
+                <p className="list-data">{x.name}</p>
+                <p>{x.date}</p>
+              </div>
+            ))}</div>
         </div>
       </div>
 
