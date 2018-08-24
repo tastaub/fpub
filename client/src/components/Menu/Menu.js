@@ -7,43 +7,54 @@ import { Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "../Main/Main.css";
 
-var beers=[
-   { name: "Pub Chips",
-    price: "$3.50"
-   },
-   { name: "Beer Battered Onion Rings",
-    price: "$6.75"
-   },
-   { name: "Hot Wings",
-    price: "$6.00"
-   },
-   { name: "Chicken Tenders",
-    price: "$6.50"
-   },
-   { name: "Irish Sliders",
-    price: "$6.75"
-   },
-   { name: "Black Angus Burger",
-    price: "$7.50"
-   },
-   { name: "Salads, grilled chicken &", 
-    price: "much more to come!"
-   }
-]
+// var beers=[
+//    { name: "Pub Chips",
+//     price: "$3.50"
+//    },
+//    { name: "Beer Battered Onion Rings",
+//     price: "$6.75"
+//    },
+//    { name: "Hot Wings",
+//     price: "$6.00"
+//    },
+//    { name: "Chicken Tenders",
+//     price: "$6.50"
+//    },
+//    { name: "Irish Sliders",
+//     price: "$6.75"
+//    },
+//    { name: "Black Angus Burger",
+//     price: "$7.50"
+//    },
+//    { name: "Salads, grilled chicken &", 
+//     price: "much more to come!"
+//    }
+// ]
 class Menu extends Component {
-
+  constructor() {
+    super();
+    this.state = {
+      food: []
+    };
+  }
   componentDidMount() {
-    API.getFood
+    this.loadFood();
+  }
+
+  loadFood() {
+    API.getFood().then(res => {
+      this.setState({ food: res.data });
+    });
   }
 
   render() {
       
-      var displayBeers = beers.map((eachitem,index)=> 
-        <div>
-            <p key={index} className="list-data">{eachitem.name}</p>
-            <p key={index} className="list-data">{eachitem.price}</p>
-        </div>
-    )
+    //   var displayBeers = beers.map((eachitem,index)=> 
+    //     <div>
+    //         <p key={index} className="list-data">{eachitem.name}</p>
+    //         <p key={index} className="list-data">{eachitem.price}</p>
+    //     </div>
+    // )
     return (
       <div>
       <div id="main-container">
@@ -90,7 +101,15 @@ class Menu extends Component {
         </ul>
       </div>
 
-      <div className="white right-container">{displayBeers}</div>
+      <div className="white right-container">
+            {this.state.food.map(x => (
+              <div>
+                <p className="list-data">{x.name}:{'  '}
+                {x.price}</p>
+                <br />
+              </div>
+            ))}
+            </div>
       </div>
     </div>
 
