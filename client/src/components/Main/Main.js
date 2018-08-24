@@ -76,34 +76,34 @@ class Main extends Component {
 
               <div>
                 <p className="contact">
-                  <Link
-                    to="https://www.facebook.com/FreemansPub/"
+                  <a
+                    href="https://www.facebook.com/FreemansPub/"
                     target="_blank"
                   >
                     {" "}
                     <Icon name="facebook" size="big" />
-                  </Link>
-                  <Link
-                    to="https://www.instagram.com/freemanspub/"
+                  </a>
+                  <a
+                    href="https://www.instagram.com/freemanspub/"
                     target="_blank"
                   >
                     {" "}
                     <Icon name="instagram" size="big" />
-                  </Link>
-                  <Link
-                    to="https://www.tripadvisor.com/ShowUserReviews-g49156-d1775729-r281484796-Freeman_s_Pub-Gastonia_North_Carolina.html"
+                  </a>
+                  <a
+                    href="https://www.tripadvisor.com/ShowUserReviews-g49156-d1775729-r281484796-Freeman_s_Pub-Gastonia_North_Carolina.html"
                     target="_blank"
                   >
                     {" "}
                     <Icon name="tripadvisor" size="big" />
-                  </Link>
-                  <Link
-                    to="https://www.yelp.com/biz/freemans-pub-gastonia?osq=freemans+pub"
+                  </a>
+                  <a
+                    href="https://www.yelp.com/biz/freemans-pub-gastonia?osq=freemans+pub"
                     target="_blank"
                   >
                     {" "}
                     <Icon name="yelp" size="big" />
-                  </Link>
+                  </a>
                 </p>
               </div>
             </ul>
