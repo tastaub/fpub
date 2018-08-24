@@ -77,7 +77,7 @@ class EventsAdmin extends Component {
     const id = this.state.editID;
     const eventData = {
       name: this.state.eventName,
-      price: this.state.date
+      date: this.state.date
     };
     API.editEvents(id, eventData)
       .then(this.loadEvents())
