@@ -7,51 +7,51 @@ import { Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "../Main/Main.css";
 
-var events = [
-  {
-    name: "Jade Moore at Freeman's Pub",
-    date: "AUG 3",
-    time: "9:30"
-  },
-  {
-    name: "Live music. Dan &a Cory Duo",
-    date: "AUG 4",
-    time: "9:30"
-  },
-  {
-    name: "The Corey Hunt Band",
-    date: "JUL 28",
-    time: "9:30"
-  },
-  {
-    name: "The Menders w Particles Collide",
-    date: "JUL 27",
-    time: "9:30"
-  },
-  {
-    name: "Sticky Bandits",
-    date: "JUL 21",
-    time: "9:30"
-  },
-  {
-    name: "Sticky Bandits",
-    date: "JUL 21",
-    time: "9:30"
-  },
-  {
-    name: "Sticky Bandits",
-    date: "JUL 21",
-    time: "9:30"
-  },
-  {
-    name: "Sticky Bandits",
-    date: "JUL 21",
-    time: "9:30"
-  }
+// var events = [
+//   {
+//     name: "Jade Moore at Freeman's Pub",
+//     date: "AUG 3",
+//     time: "9:30"
+//   },
+//   {
+//     name: "Live music. Dan &a Cory Duo",
+//     date: "AUG 4",
+//     time: "9:30"
+//   },
+//   {
+//     name: "The Corey Hunt Band",
+//     date: "JUL 28",
+//     time: "9:30"
+//   },
+//   {
+//     name: "The Menders w Particles Collide",
+//     date: "JUL 27",
+//     time: "9:30"
+//   },
+//   {
+//     name: "Sticky Bandits",
+//     date: "JUL 21",
+//     time: "9:30"
+//   },
+//   {
+//     name: "Sticky Bandits",
+//     date: "JUL 21",
+//     time: "9:30"
+//   },
+//   {
+//     name: "Sticky Bandits",
+//     date: "JUL 21",
+//     time: "9:30"
+//   },
+//   {
+//     name: "Sticky Bandits",
+//     date: "JUL 21",
+//     time: "9:30"
+//   }
 
 
 
-]
+// ]
 class Events extends Component {
   constructor() {
     super();
@@ -72,13 +72,13 @@ class Events extends Component {
 
 
   render() {
-    var displayEvents = events.map((eachitem, index) =>
-      <div>
-        <p className="list-data" key={index}>{eachitem.name}</p>
-        <p className="list-data" key={index}>{eachitem.date}</p>
-        <p className="list-data" key={index}>{eachitem.time}</p>
-      </div>
-    )
+    // var displayEvents = events.map((eachitem, index) =>
+    //   <div>
+    //     <p className="list-data" key={index}>{eachitem.name}</p>
+    //     <p className="list-data" key={index}>{eachitem.date}</p>
+    //     <p className="list-data" key={index}>{eachitem.time}</p>
+    //   </div>
+    // )
     return (
       <div>
         <div id="main-container">
