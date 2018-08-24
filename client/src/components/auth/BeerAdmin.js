@@ -18,11 +18,16 @@ class BeerAdmin extends Component {
       beer: "",
       price: "",
       errors: {},
-      beers: []
+      beers: [],
+      isEdit: false,
+      editID: ""
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.deleteBeer = this.deleteBeer.bind(this);
+    this.editBeer = this.editBeer.bind(this);
+    this.onEdit = this.onEdit.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +46,14 @@ class BeerAdmin extends Component {
       .catch(err => console.log(err));
   };
 
+  editBeer(res) {
+    this.setState({
+      beer: res.name,
+      price: res.price,
+      isEdit: true,
+      editID: res._id
+    });
+  }
   //   componentWillReceiveProps(nextProps) {
   //     if (nextProps.auth.isAuthenticated) {
   //       this.props.history.push("/");
@@ -51,8 +64,15 @@ class BeerAdmin extends Component {
   //     }
   //   }
 
-  onEdit() {
-    console.log("clicked");
+  onEdit(e) {
+    e.preventDefault();
+
+    const id = this.state.editID;
+    const beerData = {
+      name: this.state.beer,
+      price: this.state.price
+    };
+    API.editBeer(id, beerData).then(this.loadBeer());
   }
 
   onSubmit(e) {
@@ -79,7 +99,7 @@ class BeerAdmin extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center white">Add Beer</h1>
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={!this.state.isEdit ? this.onSubmit : this.onEdit}>
                 <div className="form-group">
                   <input
                     type="string"
@@ -112,12 +132,19 @@ class BeerAdmin extends Component {
                     <div className="invalid-feedback">{errors.price}</div>
                   )}
                 </div>
-                <input style={{marginBottom:"5%"}} type="submit" className="btn btn-info btn-block mt-4" />
+                <input
+                  style={{ marginBottom: "5%" }}
+                  type="submit"
+                  className="btn btn-info btn-block mt-4"
+                />
               </form>
             </div>
           </div>
         </div>
-        <div  style={{overflow:"scroll", height:"45vh"}} className="beer-table">
+        <div
+          style={{ overflow: "scroll", height: "45vh" }}
+          className="beer-table"
+        >
           <Table celled>
             <Table.Header>
               <Table.Row>
