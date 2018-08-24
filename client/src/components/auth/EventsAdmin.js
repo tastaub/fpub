@@ -65,7 +65,7 @@ class EventsAdmin extends Component {
 
     const eventData = {
       name: this.state.eventName,
-      price: this.state.date
+      date: this.state.date
     };
 
     API.postEvents(eventData).then(this.loadEvents());
