@@ -13,22 +13,22 @@ export default class Navbar extends Component {
     return (
       <div className="ui blue three item inverted menu">
         <Link to="/">
-          <Menu.Item name="home" onClick={this.handleItemClick}>
-            Home
+          <Menu.Item className="white font" name="home" onClick={this.handleItemClick}>
+            Return Home 
           </Menu.Item>
         </Link>
         <Link to="register">
-          <Menu.Item
+          <Menu.Item className="white font"
             name="register"
             active={activeItem === "register"}
             onClick={this.handleItemClick}
           >
-            Register New User
+             Add User
           </Menu.Item>
         </Link>
 
         <Link to="addFood">
-          <Menu.Item
+          <Menu.Item className="white font"
             name="food"
             active={activeItem === "food"}
             onClick={this.handleItemClick}
@@ -38,7 +38,7 @@ export default class Navbar extends Component {
         </Link>
 
         <Link to="addBeer">
-          <Menu.Item
+          <Menu.Item className="white font"
             name="beer"
             active={activeItem === "beer"}
             onClick={this.handleItemClick}
@@ -48,7 +48,7 @@ export default class Navbar extends Component {
         </Link>
 
         <Link to="addEvents">
-          <Menu.Item
+          <Menu.Item className="white font"
             name="events"
             active={activeItem === "events"}
             onClick={this.handleItemClick}

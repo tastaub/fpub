@@ -7,8 +7,11 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
 import "../Main/Main.css";
+import Coverflow from 'react-coverflow';
 
 class Main extends Component {
+
+  
   onLogoutClick(e) {
     e.preventDefault();
     this.props.logoutUser();
@@ -111,10 +114,9 @@ class Main extends Component {
 
           <div className="white right-container">
             <h1>
+              <p className="title">
               Welcome to the pub!
-              <br />
-              <br />
-              <br />
+              </p>
               Freeman's Pub, An Irish-American Public House is in Historic
               Downtown Gastonia. We have 70 plus bottle beer, 5 draft and over
               25 whiskys. Come see the hot spot in Downtown G Town. Live music
@@ -123,7 +125,7 @@ class Main extends Component {
               <br />
               <br />
               <img
-                className="PubPics"
+                className="PubPics grow multiple-borders"
                 src={
                   "https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-0/c9.0.200.200/p200x200/27657970_10156033792089882_6689822609519975239_n.jpg?_nc_cat=0&oh=3c040f92cb1e88e54a51de76dc4be849&oe=5C092770"
                 }
