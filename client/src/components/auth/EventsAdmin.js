@@ -155,7 +155,7 @@ class EventsAdmin extends Component {
               {this.state.events.map(res => (
                 <Table.Row>
                   <Table.Cell>{res.name}</Table.Cell>
-                  <Table.Cell>{res.date}</Table.Cell>
+                  <Table.Cell>{res.date.slice(5,10)} {res.date.slice(0,4)}</Table.Cell>
                   <Table.Cell>
                     <Icon
                       name="delete"

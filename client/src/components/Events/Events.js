@@ -157,7 +157,7 @@ class Events extends Component {
             {this.state.events.map(x => (
               <div>
                 <p className="list-data">{x.name}</p>
-                <p>{x.date}</p>
+                <p>{x.date.slice(5,10)} {x.date.slice(0,4)}</p>
               </div>
             ))}
           </div>
