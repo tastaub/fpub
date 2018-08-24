@@ -9,7 +9,7 @@ import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
 
 import Navbar from "./Navbar";
-import beerlist from "../Beerlist/beerlist";
+import "./Admin.css";
 
 class BeerAdmin extends Component {
   constructor() {
@@ -180,7 +180,7 @@ class BeerAdmin extends Component {
       </div>
     );
     return (
-      <div>
+      <div className="content">
         <Navbar />
         {isAuthenticated ? isUser : noUser}
       </div>

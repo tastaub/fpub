@@ -5,6 +5,7 @@ import classnames from "classnames";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import Navbar from "../auth/Navbar";
+import "./Admin.css";
 
 class Register extends Component {
   constructor() {
@@ -54,7 +55,7 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div>
+      <div className="content">
         <Navbar />
         <div className="register">
           <div className="container">

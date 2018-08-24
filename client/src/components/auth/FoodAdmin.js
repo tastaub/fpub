@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
 import Navbar from "./Navbar";
+import "./Admin.css";
 
 class FoodAdmin extends Component {
   constructor() {
@@ -192,7 +193,7 @@ class FoodAdmin extends Component {
       </div>
     );
     return (
-      <div>
+      <div className="content">
         <Navbar />
         {isAuthenticated ? isUser : noUser}
       </div>
